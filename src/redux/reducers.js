@@ -1,8 +1,13 @@
 import { INCREMENT, DECREMENT, ADD_PATIENT, REMOVE_PATIENT } from './actions'
 
+const getInitialTime = () => {
+     const initialTime = new Date().toLocaleTimeString()
+     return initialTime
+}
+
 export const initialState = {
     counter: 0,
-    queue: [{name: "John", id: 34354}]
+    queue: [{name: "John", rgstrTime: getInitialTime(),  id: 34354}]
 }
 
 export const counterReducer = (state = initialState, action) => {

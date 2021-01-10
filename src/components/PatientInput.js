@@ -8,6 +8,16 @@ export class PatientInput extends Component {
         id: 0
     }
 
+    getNow = () => {
+        const now = new Date().now()
+        return now
+    }
+
+    getCurrentTime = () => {
+        const currentTime = new Date().toLocaleTimeString()
+        return currentTime
+    }
+
     patientNameChangedHandler = (event)=> {
         this.setState({patientName: event.target.value})
     }
@@ -26,7 +36,7 @@ export class PatientInput extends Component {
                        />
                 <p>{this.state.patientName}</p>
                 <p>{console.log(this.props.state)}</p>
-                <button onClick={() => this.props.onCreatePatient(this.state.patientName, this.getRandomId())}>
+                <button onClick={() => this.props.onCreatePatient(this.state.patientName, this.getCurrentTime(), this.getRandomId())}>
                     Add Patient
                 </button>
                 <button disabled={this.props.queueReducer.queue.length === 0} onClick={() => {
@@ -48,7 +58,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        onCreatePatient: (name, id) => dispatch({type: ADD_PATIENT, newPatient: {name, id}}),
+        onCreatePatient: (name, time, id) => dispatch({type: ADD_PATIENT, newPatient: {name, rgstrTime: time, id}}),
         onDeletePatient: (patientId) => dispatch({type: REMOVE_PATIENT, patientId})
     }
 }

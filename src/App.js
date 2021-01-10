@@ -6,6 +6,7 @@ import { INCREMENT, DECREMENT } from './redux/actions'
 
 import PatientInput from './components/PatientInput'
 import List from './components/List'
+import Clock from './components/Clock'
 
 function App(props) {
 
@@ -13,9 +14,7 @@ function App(props) {
     <div className="App">
       {console.log(props)}
       <h1>Optihealth</h1>
-      <h2>{props.counter}</h2>
-      <button onClick={props.onIncrementCounter}>Add</button>
-      <button onClick={props.onDecrementCounter}>Less</button>
+      <Clock/>
       <PatientInput/>
       <div>
         <List/>
