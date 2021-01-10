@@ -3,10 +3,27 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { initialState } from './redux/reducers'
+
+import { Provider } from 'react-redux';
+import { createStore, combineReducers } from 'redux';
+
+import { counterReducer, queueReducer } from './redux/reducers';
+
+const rootReducer = combineReducers({
+  counterReducer,
+  queueReducer
+})
+
+const store = createStore(
+  rootReducer, initialState, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <App/>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

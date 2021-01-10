@@ -1,25 +1,40 @@
 import logo from './logo.svg';
 import './App.css';
 
-function App() {
+import { connect } from 'react-redux'
+import { INCREMENT, DECREMENT } from './redux/actions'
+
+import PatientInput from './components/PatientInput'
+import List from './components/List'
+
+function App(props) {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {console.log(props)}
+      <h1>Optihealth</h1>
+      <h2>{props.counter}</h2>
+      <button onClick={props.onIncrementCounter}>Add</button>
+      <button onClick={props.onDecrementCounter}>Less</button>
+      <PatientInput/>
+      <div>
+        <List/>
+      </div>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+      ...state
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onIncrementCounter: () => dispatch({type: INCREMENT}),
+    onDecrementCounter: () => dispatch({type: DECREMENT})
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
