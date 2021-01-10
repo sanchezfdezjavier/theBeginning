@@ -9,6 +9,10 @@
 	font-family: "Nunito", sans-serif;
 }
 
+.avatar {
+	width: 2em;
+}
+
 h1 {
 	color: rgb(0, 67, 126);
 }

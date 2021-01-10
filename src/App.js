@@ -7,6 +7,7 @@ import { INCREMENT, DECREMENT } from './redux/actions'
 import PatientInput from './components/PatientInput'
 import List from './components/List/List'
 import Clock from './components/Clock'
+import avatarImg from './assets/avatar.png'
 
 function App(props) {
 
@@ -14,6 +15,7 @@ function App(props) {
     <div className="App">
       {console.log(props)}
       <h1>Optihealth</h1>
+      <img className="avatar" src={avatarImg} alt="avatar"/>
       <Clock/>
       <PatientInput/>
       <div>

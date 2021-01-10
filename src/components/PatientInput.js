@@ -4,6 +4,8 @@ import { ADD_PATIENT, REMOVE_PATIENT } from '../redux/actions'
 
 import { getNow, getCurrentTime } from '../helpers/timeHelpers.js'
 
+import '../App.css'
+
 export class PatientInput extends Component {
     state = {
         patientName: "",
