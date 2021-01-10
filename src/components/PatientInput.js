@@ -2,20 +2,12 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { ADD_PATIENT, REMOVE_PATIENT } from '../redux/actions'
 
+import { getNow, getCurrentTime } from '../helpers/timeHelpers.js'
+
 export class PatientInput extends Component {
     state = {
         patientName: "",
         id: 0
-    }
-
-    getNow = () => {
-        const now = new Date().now()
-        return now
-    }
-
-    getCurrentTime = () => {
-        const currentTime = new Date().toLocaleTimeString()
-        return currentTime
     }
 
     patientNameChangedHandler = (event)=> {
@@ -36,7 +28,7 @@ export class PatientInput extends Component {
                        />
                 <p>{this.state.patientName}</p>
                 <p>{console.log(this.props.state)}</p>
-                <button onClick={() => this.props.onCreatePatient(this.state.patientName, this.getCurrentTime(), this.getRandomId())}>
+                <button onClick={() => this.props.onCreatePatient(this.state.patientName, getCurrentTime(), this.getRandomId())}>
                     Add Patient
                 </button>
                 <button disabled={this.props.queueReducer.queue.length === 0} onClick={() => {
@@ -44,7 +36,6 @@ export class PatientInput extends Component {
                 }}>
                     Delete first Patient
                 </button>
-                <p>Patient to delete: {this.props.queueReducer.queue[0]?.id}</p>
             </div>
         )
     }

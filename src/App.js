@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { INCREMENT, DECREMENT } from './redux/actions'
 
 import PatientInput from './components/PatientInput'
-import List from './components/List'
+import List from './components/List/List'
 import Clock from './components/Clock'
 
 function App(props) {
